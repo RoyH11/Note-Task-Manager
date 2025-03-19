@@ -25,7 +25,7 @@ Ensure you have the following installed:
 - Flask-Migrate
 - Flask-CORS
 - Flask-JWT-Extended
-- pip (for package management)
+- Conda (for environment management)
 
 ### Installation
 1. Clone the repository:
@@ -33,10 +33,10 @@ Ensure you have the following installed:
    git clone <repo-url>
    cd backend
    ```
-2. Create a virtual environment (optional but recommended):
+2. Create a Conda environment:
    ```sh
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   conda create --name task-manager python=3.9
+   conda activate task-manager
    ```
 3. Install dependencies:
    ```sh
