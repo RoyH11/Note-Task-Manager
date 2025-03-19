@@ -1,26 +1,36 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 from dotenv import load_dotenv
-from routes import routes
 import os
 
-load_dotenv()
+from routes import routes
+from models import db, Task, User
 
-app = Flask(__name__)
-CORS(app)
+def create_app():
+     # create app
+     app = Flask(__name__)
+     CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
+     # load .env
+     load_dotenv()
 
-db = SQLAlchemy(app)
-jwt = JWTManager(app)
+     # database 
+     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
+     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 
-app.register_blueprint(routes)
+     # initialize extensions
+     db.init_app(app)
+     Migrate(app, db)
+     JWTManager(app)
+
+     app.register_blueprint(routes)
+
+     return app
 
 if __name__ == '__main__': 
-     with app.app_context(): 
-          db.create_all()
+     app = create_app()
      app.run(host="0.0.0.0", port=5000, debug=True)

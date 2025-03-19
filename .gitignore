@@ -1,7 +1,12 @@
 # Virtual environment
 venv/
+env/
+
+# Python bytecode
 *.pyc
 __pycache__/
+*.py[cod]
+*.so
 
 # Conda environment
 *.conda
@@ -16,6 +21,13 @@ instance/
 
 # VS Code settings (optional)
 .vscode/
+.idea/
+*.iml
 
 # MacOS junk files
 .DS_Store
+Thumbs.db
+
+
+# Other files that don't need to be tracked
+.log
