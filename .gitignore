@@ -1,0 +1,21 @@
+# Virtual environment
+venv/
+*.pyc
+__pycache__/
+
+# Conda environment
+*.conda
+
+# Database files
+instance/
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+
+# VS Code settings (optional)
+.vscode/
+
+# MacOS junk files
+.DS_Store
