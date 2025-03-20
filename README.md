@@ -2,6 +2,8 @@
 
 This repository contains the backend for the Task Manager application, built using Flask and SQLite.
 
+Check out the wiki for project updates [wiki](https://github.com/RoyH11/Note-Task-Manager/wiki).
+
 ## Project Structure
 ```
 .
