@@ -21,3 +21,13 @@ def get_users():
         })
     return jsonify(user_list)
 
+# Get one user
+@routes.route('/users/<int:id>', methods=['GET'])
+def get_user(id): 
+    user = User.query.get(id)
+    if not user: 
+        return jsonify({"error": "User not found"}), 404
+    return jsonify({
+        "id": user.id,
+        "username": user.username
+    })
