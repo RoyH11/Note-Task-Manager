@@ -1,85 +1,144 @@
-# Task Manager Backend
+# Note-Task-Manager
 
-This repository contains the backend for the Task Manager application, built using Flask and SQLite.
+This is a full-stack task/note manager web application built with **Flask** for the backend and **React (Vite)** for the frontend. It supports creating, viewing, updating, and deleting tasks tied to specific users.
 
 Check out the wiki for project updates [wiki](https://github.com/RoyH11/Note-Task-Manager/wiki).
 
-## Project Structure
+
+---
+
+## 📁 Project Structure
 ```
-.
-├── LICENSE
-├── README.md
-└── backend
-    ├── app.py
-    ├── models.py
-    ├── routes.py
-    ├── migrations/
-    ├── instance/
-    │   └── tasks.db
+Note-Task-Manager/
+├── backend/        # Flask API
+│   ├── app.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── seed_db.py
+│   └── migrations/
+├── frontend/       # React app (Vite)
+│   ├── src/
+│   ├── public/
+│   └── .env
+└── README.md
 ```
 
-## Getting Started
-### Prerequisites
-Ensure you have the following installed:
-- Python 3.9+
-- Flask
-- Flask-SQLAlchemy
-- Flask-Migrate
-- Flask-CORS
-- Flask-JWT-Extended
-- Conda (for environment management)
+---
 
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone <repo-url>
+## 🔧 Backend Setup (Flask)
+1. **Navigate to backend directory**
+   ```bash
    cd backend
    ```
-2. Create a Conda environment:
-   ```sh
-   conda create --name task-manager python=3.9
-   conda activate task-manager
+
+2. **Create and activate Conda environment** (or use your preferred Python environment)
+   ```bash
+   conda create -n task-manager-dev python=3.9
+   conda activate task-manager-dev
    ```
-3. Install dependencies:
-   ```sh
+
+3. **Install dependencies**
+   ```bash
    pip install -r requirements.txt
    ```
-4. Set up environment variables:
-   Create a `.env` file in the `backend` directory and add:
-   ```
-   JWT_SECRET_KEY=your_secret_key
-   ```
 
-### Database Setup & Migration
-We use Flask-Migrate for handling database migrations.
-
-1. Initialize the migration directory (only needed once):
-   ```sh
-   flask db init
-   ```
-2. Generate a new migration (whenever models change):
-   ```sh
-   flask db migrate -m "Initial migration"
-   ```
-3. Apply the migration (creates/modifies the database schema):
-   ```sh
+4. **Run database migrations**
+   ```bash
    flask db upgrade
    ```
 
-### Running the Application
-To start the Flask server:
-```sh
-python app.py
+5. **(Optional) Seed mock data**
+   ```bash
+   python seed_db.py
+   ```
+
+6. **Start the Flask server**
+   ```bash
+   python app.py
+   ```
+   API will be available at `http://localhost:5000`
+
+---
+
+## ⚛️ Frontend Setup (React + Vite)
+1. **Navigate to the project root**
+   ```bash
+   cd ~/Projects/Note-Task-Manager
+   ```
+
+2. **Ensure Volta is installed**
+   If not:
+   ```bash
+   curl https://get.volta.sh | bash
+   exec $SHELL
+   volta install node
+   volta install npm
+   volta pin node
+   volta pin npm
+   ```
+
+3. **Create React app (if not already created)**
+   ```bash
+   npm create vite@latest frontend -- --template react
+   cd frontend
+   npm install
+   ```
+
+4. **Start the frontend dev server**
+   ```bash
+   npm run dev
+   ```
+   React app will be available at `http://localhost:5173`
+
+---
+
+## 🌐 Connecting Frontend to Backend
+In `frontend/.env`:
+```env
+VITE_API_BASE=http://localhost:5000
 ```
-By default, the application runs on `http://127.0.0.1:5000/`.
+Use it in code like this:
+```js
+fetch(`${import.meta.env.VITE_API_BASE}/tasks`)
+```
 
-### API Endpoints
-- `GET /` - Check if the API is running.
-- Additional routes for tasks and users will be added later.
+---
 
-### Notes
-- The `instance/` directory contains the SQLite database and should be ignored in version control.
-- The `migrations/` folder tracks database schema changes and should be committed.
+## 💅 Tailwind CSS (Frontend Styling)
+1. **Install Tailwind CSS**
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   ```
 
-Let me know if you need further clarification! 🚀
+2. **Configure `tailwind.config.js`**
+   ```js
+   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"]
+   ```
 
+3. **Import Tailwind into `src/index.css`**
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+---
+
+## 🧠 API Endpoints (Backend)
+- `GET /users` - list all users
+- `POST /users` - create a user
+- `GET /tasks` - list all tasks
+- `POST /tasks` - create a task
+- `PUT /tasks/<id>` - update a task
+- `DELETE /tasks/<id>` - delete a task
+
+---
+
+## 🚀 What's Next
+- [ ] Add task editing & deletion in frontend
+- [ ] Add user selector in create task form
+- [ ] JWT-based authentication
+- [ ] Save user sessions
+
+Let me know if you need any help catching up or want to build a feature! ✨
