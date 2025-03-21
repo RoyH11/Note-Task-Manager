@@ -31,4 +31,4 @@ Thumbs.db
 
 # Other files that don't need to be tracked
 .log
-temporery.py
+/temporery.py

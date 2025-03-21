@@ -1,0 +1,19 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Database
+instance/
+*.db
+
+# Env
+.env
+
+# Migrations
+migrations/__pycache__/
+migrations/versions/__pycache__/
+
+# Editor stuff
+.vscode/
+.idea/
+.DS_Store

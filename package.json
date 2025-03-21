@@ -1,0 +1,24 @@
+{
+  "name": "note-task-manager",
+  "version": "1.0.0",
+  "description": "This repository contains the backend for the Task Manager application, built using Flask and SQLite.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyH11/Note-Task-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RoyH11/Note-Task-Manager/issues"
+  },
+  "homepage": "https://github.com/RoyH11/Note-Task-Manager#readme",
+  "volta": {
+    "node": "22.14.0",
+    "npm": "11.2.0"
+  }
+}
