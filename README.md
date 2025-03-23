@@ -9,18 +9,32 @@ Check out the wiki for project updates [wiki](https://github.com/RoyH11/Note-Tas
 
 ## 📁 Project Structure
 ```
-Note-Task-Manager/
-├── backend/        # Flask API
-│   ├── app.py
-│   ├── models.py
-│   ├── routes.py
-│   ├── seed_db.py
-│   └── migrations/
-├── frontend/       # React app (Vite)
-│   ├── src/
-│   ├── public/
-│   └── .env
-└── README.md
+.
+├── LICENSE
+├── README.md
+├── backend
+│   ├── __pycache__/
+│   ├── app.py
+│   ├── instance/
+│   ├── migrations/
+│   ├── models.py
+│   ├── routes.py
+│   └── seed_db.py
+├── frontend
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── node_modules/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public/
+│   ├── src/
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── package.json
+└── requirements.txt
 ```
 
 ---
@@ -92,36 +106,9 @@ Note-Task-Manager/
 
 ---
 
-## 🌐 Connecting Frontend to Backend
-In `frontend/.env`:
-```env
-VITE_API_BASE=http://localhost:5000
-```
-Use it in code like this:
-```js
-fetch(`${import.meta.env.VITE_API_BASE}/tasks`)
-```
-
----
 
 ## 💅 Tailwind CSS (Frontend Styling)
-1. **Install Tailwind CSS**
-   ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init -p
-   ```
-
-2. **Configure `tailwind.config.js`**
-   ```js
-   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"]
-   ```
-
-3. **Import Tailwind into `src/index.css`**
-   ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
-   ```
+refer to [Tailwind Docs](https://tailwindcss.com/docs/installation/using-vite) for installation and setup.
 
 ---
 
@@ -134,11 +121,5 @@ fetch(`${import.meta.env.VITE_API_BASE}/tasks`)
 - `DELETE /tasks/<id>` - delete a task
 
 ---
-
-## 🚀 What's Next
-- [ ] Add task editing & deletion in frontend
-- [ ] Add user selector in create task form
-- [ ] JWT-based authentication
-- [ ] Save user sessions
 
 Let me know if you need any help catching up or want to build a feature! ✨
